@@ -13,6 +13,5 @@ namespace FOLYFOOD.Entitys
 
         // Mối quan hệ: Một ProductType có nhiều Product
         public ICollection<Product> Products { get; set; }
-        public Guid? Key { get; set; }
     }
 }
