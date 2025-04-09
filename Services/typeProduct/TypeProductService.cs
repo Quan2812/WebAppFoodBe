@@ -102,17 +102,18 @@ namespace FOLYFOOD.Services.typeProduct
         }
         public async Task<IQueryable<dynamic>> getProductTypeFrontend()
         {
-            return DBContext.ProductTypes
-    .Where(x => x.Products.Count() > 0)
-    .Select(x => new
-    {
-        ProductTypeId = x.ProductTypeId,
-        NameProductType = x.NameProductType,
-        ImageTypeProduct = x.ImageTypeProduct,
-        CreatedAt = x.CreatedAt,
-        UpdatedAt = x.UpdatedAt,
-        Key = Guid.NewGuid()
-    }).AsNoTracking();
+            var query = DBContext.ProductTypes
+        .Select(x => new
+        {
+            ProductTypeId = x.ProductTypeId,
+            NameProductType = x.NameProductType,
+            ImageTypeProduct = x.ImageTypeProduct,
+            CreatedAt = x.CreatedAt,
+            UpdatedAt = x.UpdatedAt,
+            Key = Guid.NewGuid()
+        })
+        .AsNoTracking();
+            return query;
         }
         public async Task<RetunObject<ProductType>> getTypeProductDetail(int productTypeId)
         {
