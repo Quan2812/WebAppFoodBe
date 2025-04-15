@@ -31,7 +31,12 @@ namespace FOLYFOOD.Controllers.cart
         public async Task<IActionResult> Get(int id)
         {
             List<CartsResponse> res = await cartServicer.GetCarts(id);
-            return Ok(res);  
+            var result = new
+            {
+                data = res
+            };
+
+            return Ok(result);
         }
         [HttpGet("remove-cart/{id}")]
         public async Task<IActionResult> RemoveAllCart(int id)
