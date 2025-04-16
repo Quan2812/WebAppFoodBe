@@ -180,7 +180,7 @@ namespace POLYFOOD.Controllers
                 new Claim("username", Convert.ToString(username)),
                 new Claim("accountId", Convert.ToString(accountId)),
                 new Claim("role", Convert.ToString(role)),
-                 new Claim(ClaimTypes.Role, role)
+                new Claim(ClaimTypes.Role, role)
         };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));

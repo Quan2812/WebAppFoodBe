@@ -8,9 +8,9 @@ namespace FOLYFOOD.Hellers
 {
     public class uplloadFile
     {
-        static string cloudName = "doedovklj";
-        static string apiKey = "743786547245974";
-        static string apiSecret = "BmEThs-v2v0UE64hLQIT19M4ntk";
+        static string cloudName = "doedovklj"; // quanbh2812
+        static string apiKey = "743786547245974"; // 418698593737751
+        static string apiSecret = "BmEThs-v2v0UE64hLQIT19M4ntk"; // _XwSof4DRSJ0L1FN_BddWgJbjQM
         static private readonly Random rnd = new Random();
 
         static public Account account = new Account(cloudName, apiKey, apiSecret);

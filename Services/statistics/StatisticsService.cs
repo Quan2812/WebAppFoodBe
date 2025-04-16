@@ -17,12 +17,14 @@ namespace FOLYFOOD.Services.statistics
         {
             if (startDate == null)
             {
-                startDate = DateTime.Now.AddMonths(-1).Date; // Tháng trước
+                // Lấy ngày đầu tháng của tháng trước
+                startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(-1).Date;
             }
 
             if (endDate == null)
             {
-                endDate = DateTime.Now.Date; // Tháng hiện tại
+                // Ngày cuối cùng của ngày hiện tại, để không cắt mất dữ liệu trong ngày
+                endDate = DateTime.Now.Date.AddDays(1).AddTicks(-1);
             }
 
             using (var dbContext = new Context())

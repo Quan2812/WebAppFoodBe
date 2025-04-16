@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FOLYFOOD.Entitys
 {
-
+    [Table("payment_order")]
     public class PaymentOrder
     {
         [Key]

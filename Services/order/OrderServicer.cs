@@ -96,7 +96,9 @@ namespace FOLYFOOD.Services.order
                     OrderId = orderCreate.OrderId,
                     Price = detail.Price,
                     Quantity = detail.Quantity,
-                    ProductId = detail.ProductId
+                    ProductId = detail.ProductId,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
                 };
                 await productService.updateQuantity(item.ProductId, item.Quantity);
                 listOrder.Add(item);
@@ -297,13 +299,7 @@ namespace FOLYFOOD.Services.order
 
         public async Task<RetunObject<Order>> cancelOrder(string code, string accountId, string role,string message) {
             var dataOne = DBContext.Orders.FirstOrDefault(x => x.CodeOrder == code);
-         
-          
-           
             var user = DBContext.Users.FirstOrDefault(x => x.UserId == dataOne.UserId);
-
-        
-         
             try
             {
                 if (dataOne == null)

@@ -8,7 +8,7 @@
         public int OrderStatusId { get; set; }
         public int provinces { get; set; }
         public int districts { get; set; }
-        public int wards { get; set; }
+        public string wards { get; set; }
         public int pickupTime { get; set; }
         public double originalPrice { get; set; }
         public string? noteOrder { set; get; }

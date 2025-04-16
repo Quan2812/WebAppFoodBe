@@ -6,6 +6,7 @@ namespace FOLYFOOD.Entitys
     public class OrderStatus
     {
         public int OrderStatusId { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
