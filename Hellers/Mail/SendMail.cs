@@ -7,8 +7,8 @@ namespace FOLYFOOD.Hellers.Mail
         public static string send(string mailTo, string htmlTemplate, string Subject = "",bool check = false)
         {
             // Cấu hình thông tin máy chủ SMTP
-            string appPass = check ? "igyxznfpyzxngdyg" : "qbqefnmnrbrlmmqn";
-            string mailAddress = check ? "notification.ltsedu@gmail.com" : "thuanlevan72@gmail.com";
+            string appPass = check ? "nfyl flld zlbo nryc" : "nfyl flld zlbo nryc";
+            string mailAddress = check ? "buihongquan9912@gmail.com" : "buihongquan9912@gmail.com";
             var smtpClient = new SmtpClient("smtp.gmail.com")
             {
               
