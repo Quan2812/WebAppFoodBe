@@ -149,6 +149,8 @@ namespace FOLYFOOD.Services
             var carts = new Carts()
             {
                 UserId = user.UserId,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
             };
             await DbContext.Carts.AddAsync(carts);
             await DbContext.SaveChangesAsync();
