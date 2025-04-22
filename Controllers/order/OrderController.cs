@@ -49,11 +49,11 @@ namespace FOLYFOOD.Controllers.order
         public async Task<IActionResult> orderPayVn(long amount)
         {
             //Get Config Info
-
-            string vnp_Returnurl = "https://localhost:7064/vnpay_return"; //URL nhan ket qua tra ve 
+            string vnp_Returnurl = "http://polyfood.food/vnpay_return"; //URL nhan ket qua tra ve 
+            //string vnp_Returnurl = "http://localhost:3000/vnpay_return"; //URL nhan ket qua tra ve 
             string vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"; //URL thanh toan cua VNPAY 
-            string vnp_TmnCode = "NX0E4Z3Y"; //Ma định danh merchant kết nối (Terminal Id)
-            string vnp_HashSecret = "BUEOSSZUUHLMPYVUCKRIUFEJRRWZREHH"; //Secret Key
+            string vnp_TmnCode = "UO85XPK0"; //Ma định danh merchant kết nối (Terminal Id)
+            string vnp_HashSecret = "8H13XBQWX17N5GQIRXOMHOMAOP5J7F31"; //Secret Key
 
             //Get payment input
             OrderInfo order = new OrderInfo();
@@ -69,7 +69,7 @@ namespace FOLYFOOD.Controllers.order
             vnpay.AddRequestData("vnp_Version", VnPayLibrary.VERSION);
             vnpay.AddRequestData("vnp_Command", "pay");
             vnpay.AddRequestData("vnp_TmnCode", vnp_TmnCode);
-            vnpay.AddRequestData("vnp_Amount", (order.Amount * 100).ToString()); 
+            vnpay.AddRequestData("vnp_Amount", (order.Amount * 100).ToString());
 
             vnpay.AddRequestData("vnp_CreateDate", order.CreatedDate.ToString("yyyyMMddHHmmss"));
             vnpay.AddRequestData("vnp_CurrCode", "VND");
@@ -82,11 +82,12 @@ namespace FOLYFOOD.Controllers.order
             vnpay.AddRequestData("vnp_ReturnUrl", vnp_Returnurl);
             vnpay.AddRequestData("vnp_TxnRef", order.OrderId.ToString()); // Mã tham chiếu của giao dịch tại hệ thống của merchant. Mã này là duy nhất dùng để phân biệt các đơn hàng gửi sang VNPAY. Không được trùng lặp trong ngày
 
+            //vnpay.AddRequestData("vnp_IpnUrl", "https://foood-tour.online/api/Order/vnpay_ipn");
             //Add Params of 2.1.0 Version
             //Billing
 
             string paymentUrl = vnpay.CreateRequestUrl(vnp_Url, vnp_HashSecret);
-           
+
             return Ok(paymentUrl);
         }
         private static string GetIpAddress(HttpContext httpContext)

@@ -83,8 +83,6 @@ namespace FOLYFOOD.Services.order
                 actualPrice = order.actualPrice,
                 UserId = order.UserId,
                 originalPrice = order.originalPrice,
-
-                
             };
             await DBContext.Orders.AddAsync(orderCreate);
             await DBContext.SaveChangesAsync();
@@ -110,8 +108,8 @@ namespace FOLYFOOD.Services.order
             return new RetunObject<Order>()
             {
                 data = orderCreate,
-                mess = "đã tạo hóa đơn thành công",
-                statusCode = 201
+                mess = "đã tạo đơn thành công",
+                statusCode = 200
             };
         }
 

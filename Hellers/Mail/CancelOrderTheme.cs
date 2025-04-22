@@ -65,7 +65,7 @@ namespace FOLYFOOD.Hellers.Mail
         <p>Chúng tôi rất tiếc thông báo rằng bạn đã hủy đơn hàng có mã { " + code + @"} thành công.</p>
         <p>Nếu bạn có thanh online thì vui lòng liên hệ lại với chủ shop qua số <b>0352988596</b> để được hỗ trợ hoàn tiền sớm nhất.</p>
         <p>Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ thêm, vui lòng liên hệ với chúng tôi qua email hoặc số điện thoại sau:</p>
-        <p>Email: polyfood@com.fpt.com<br>Số điện thoại: 0352988596</p>
+        <p>Email: polyfood@com.vtc.com<br>Số điện thoại: 0352988596</p>
         <p>Cảm ơn con vợ " + name + @". </p>
         <a href=""#"" class=""button"">Trang Chủ</a>
         <p class=""footer"">© 2023 Tên Công Ty. Tất cả các quyền được bảo lưu.</p>

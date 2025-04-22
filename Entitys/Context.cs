@@ -265,7 +265,9 @@ namespace FOLYFOOD.Entitys
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer("Server=localhost,1433; Database=quanbh; User Id=sa; Password=\"Quan@2812$\"; TrustServerCertificate=True; MultipleActiveResultSets=True;");
+			//optionsBuilder.UseSqlServer("Server=localhost,1433; Database=quanbh; User Id=sa; Password=\"Quan@2812$\"; TrustServerCertificate=True; MultipleActiveResultSets=True;");
+			optionsBuilder.UseSqlServer("Server=103.57.221.133,1433; Database=quanbh; User Id=sa; Password=1231234; TrustServerCertificate=True; MultipleActiveResultSets=True;");
+			//optionsBuilder.UseSqlServer("Server=localhost,1433; Database=quanbh; User Id=sa; Password=1231234; TrustServerCertificate=True; MultipleActiveResultSets=True;");
 		}
 	}
 }

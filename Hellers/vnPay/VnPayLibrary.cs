@@ -49,26 +49,34 @@ namespace FOLYFOOD.Hellers.vnPay
         public string CreateRequestUrl(string baseUrl, string vnp_HashSecret)
         {
             StringBuilder data = new StringBuilder();
-            foreach (KeyValuePair<string, string> kv in _requestData)
+
+            foreach (KeyValuePair<string, string> kv in _requestData.OrderBy(x => x.Key))  // 💡 Sắp xếp A-Z
             {
                 if (!String.IsNullOrEmpty(kv.Value))
                 {
                     data.Append(WebUtility.UrlEncode(kv.Key) + "=" + WebUtility.UrlEncode(kv.Value) + "&");
                 }
             }
+
             string queryString = data.ToString();
-            baseUrl += "?" + queryString;
-            String signData = queryString;
-            if (signData.Length > 0)
+
+            // Xóa dấu & cuối cùng
+            if (queryString.EndsWith("&"))
             {
-
-                signData = signData.Remove(data.Length - 1, 1);
+                queryString = queryString.Substring(0, queryString.Length - 1);
             }
-            string vnp_SecureHash = Utils.HmacSHA512(vnp_HashSecret, signData);
-            baseUrl += "vnp_SecureHash=" + vnp_SecureHash;
 
-            return baseUrl;
+            string signData = queryString;
+
+            // Tính chữ ký
+            string vnp_SecureHash = Utils.HmacSHA512(vnp_HashSecret, signData);
+
+            // Ghép URL cuối cùng
+            string finalUrl = baseUrl + "?" + queryString + "&vnp_SecureHash=" + vnp_SecureHash;
+
+            return finalUrl;
         }
+
 
 
 
@@ -82,6 +90,7 @@ namespace FOLYFOOD.Hellers.vnPay
             string myChecksum = Utils.HmacSHA512(secretKey, rspRaw);
             return myChecksum.Equals(inputHash, StringComparison.InvariantCultureIgnoreCase);
         }
+
         private string GetResponseData()
         {
 
