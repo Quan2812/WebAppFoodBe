@@ -21,7 +21,13 @@ namespace FOLYFOOD.Controllers.statistics
         [HttpGet("TopSellingProducts")]
         public  IActionResult GetTopSellingProducts(DateTime? startDate = null, DateTime? endDate = null)
         {
-            return Ok(statisticsService.GetTopSellingProducts(startDate,endDate));
+            var res = statisticsService.GetTopSellingProducts(startDate, endDate);
+            var result = new
+            {
+                data = res,
+                statusCode = 200
+            };
+            return Ok(result);
         }
         [HttpGet("CalculateMonthlyRevenue")]
         public IActionResult GetCalculateMonthlyRevenue(DateTime? startDate = null, DateTime? endDate = null)
